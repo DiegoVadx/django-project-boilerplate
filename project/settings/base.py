@@ -83,11 +83,25 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.9/howto/static-files/
 
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.9/howto/static-f
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#   'django.contrib.staticfiles.finders.DefaultStorageFinder',
+)
+
+STATIC_ROOT = os.path.abspath(os.path.join(BASE_DIR, '../public/static'))
 STATIC_URL = '/static/'
-STATICFILES_DIRS = ['static']
-STATIC_URL_ROOT = os.path.join(BASE_DIR, '/static')
+STATICFILES_DIRS = (
+    os.path.abspath(
+        os.path.join(BASE_DIR, '../static')
+    ),
+)
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = os.path.join(BASE_DIR, '../media')
 
 SELECT2_USE_BUNDLED_JQUERY = True
+LOGIN_URL = '/login'
